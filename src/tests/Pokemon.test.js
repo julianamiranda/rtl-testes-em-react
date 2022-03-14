@@ -5,15 +5,6 @@ import App from '../App';
 import renderWithRouter from '../helpers';
 import pokemons from '../data';
 
-/*
-
-Teste se existe um ícone de estrela nos Pokémons favoritados.
-
-O ícone deve ser uma imagem com o atributo src contendo o caminho /star-icon.svg;
-
-A imagem deve ter o atributo alt igual a <pokemon> is marked as favorite, onde <pokemon> é o nome do Pokémon exibido.
-
- */
 describe('Teste o componente Pokemon', () => {
   const pkm = pokemons[0];
 
