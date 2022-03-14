@@ -4,8 +4,10 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../helpers';
 import App from '../App';
 import { FavoritePokemons } from '../components';
+import pokemons from '../data';
 
 describe('Teste o componente FavoritePokemons', () => {
+  const pkm = pokemons[0];
   test('Teste se No favorite pokemon found, não tiver pokémons favoritos.', () => {
     renderWithRouter(<FavoritePokemons />);
     const notFoundMsg = screen.getByText('No favorite pokemon found');
@@ -15,10 +17,7 @@ describe('Teste o componente FavoritePokemons', () => {
 
   test('Teste se é exibido todos os cards de pokémons favoritados.', () => {
     const { history } = renderWithRouter(<App />);
-
-    const moreDetails = screen.getByRole('link', { name: 'More details' });
-    expect(moreDetails).toBeInTheDocument();
-    userEvent.click(moreDetails);
+    history.push(`/pokemons/${pkm.id}`);
 
     const favoriteCheck = screen.getByRole('checkbox', { name: 'Pokémon favoritado?' });
     expect(favoriteCheck).toBeInTheDocument();
